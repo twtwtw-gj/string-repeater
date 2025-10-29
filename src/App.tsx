@@ -148,7 +148,7 @@ export default function App() {
         {/* GitHub Link */}
         <div className="mt-6 flex justify-center">
           <a
-            href="https://github.com/YOUR-USERNAME/string-repeater"
+            href="https://github.com/twtwtw-gj/string-repeater"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 transition-colors"
