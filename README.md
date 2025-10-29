@@ -1,73 +1,117 @@
-# React + TypeScript + Vite
+# String Repeater
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple web application that repeats a string up to a specified character count.
 
-Currently, two official plugins are available:
+**Built with Claude Artifacts** - This project was created using Claude's Artifacts feature for rapid prototyping and development.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- 🔄 Repeat any string to a target length
+- 📋 One-click copy to clipboard
+- 🎨 Clean, modern UI with Tailwind CSS
+- ⚡ Fast and responsive
+- 🔒 Client-side only (no data sent to servers)
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Use Cases
 
-## Expanding the ESLint configuration
+- Generate test data with repeated patterns
+- Fill database fields to maximum length
+- Create padding strings for alignment
+- Generate placeholder text
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Demo
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+👉 **[Live Demo](https://twtwtw-gj-string-repeater.pages.dev/)**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Usage
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Enter the string you want to repeat
+2. Specify the target character count
+3. Click "生成" (Generate)
+4. Copy the result with one click
+
+### Example
+
+- Input: `TestCode001`
+- Target: `255` characters
+- Result: `TestCode001TestCode001TestCode001...` (truncated at 255 characters)
+
+## Installation
+
+### Prerequisites
+
+- Node.js (>= 20.19.0)
+- npm or yarn
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/twtwtw-gj/string-repeater.git
+
+# Navigate to the project directory
+cd string-repeater
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Build for production
+npm run build
+
+# Preview the production build
+npm run preview
 ```
+
+## Tech Stack
+
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **Tailwind CSS 4** - Styling
+- **Lucide React** - Icons
+
+## Development Process
+
+This project was developed using [Claude](https://claude.ai/) Artifacts, which enabled rapid iteration and prototyping. The entire application was built through conversational programming, demonstrating the power of AI-assisted development.
+
+## Project Structure
+
+```
+string-repeater/
+├── src/
+│   ├── App.tsx           # Main application component
+│   ├── main.tsx          # Application entry point
+│   └── index.css         # Global styles
+├── public/               # Static assets
+├── index.html            # HTML template
+└── vite.config.ts        # Vite configuration
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amaging-future`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/amaging-future`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Built with [Claude](https://claude.ai/) Artifacts
+- Inspired by the need for simple test data generation
+- Powered by modern web technologies
