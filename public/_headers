@@ -9,3 +9,6 @@
 
 /*.js
   Cache-Control: public, max-age=157680000, immutable
+
+/favicon.ico
+  Cache-Control: public, max-age=157680000, immutable
