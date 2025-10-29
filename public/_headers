@@ -10,5 +10,5 @@
 /*.js
   Cache-Control: public, max-age=157680000, immutable
 
-/favicon.ico
+/favicon.svg
   Cache-Control: public, max-age=157680000, immutable
