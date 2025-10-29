@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Copy, RotateCcw } from 'lucide-react';
+import { Copy, RotateCcw, Github } from 'lucide-react';
 
 export default function App() {
   const [inputString, setInputString] = useState('');
@@ -24,7 +24,6 @@ export default function App() {
     setError('');
     if (!validateInput()) return;
 
-    // targetLength は validateInput() で null チェック済み
     const length = targetLength as number;
     const repeatCount = Math.ceil(length / inputString.length);
     const repeated = inputString.repeat(repeatCount).substring(0, length);
@@ -46,7 +45,6 @@ export default function App() {
 
   const handleTargetLengthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // 空の場合は null、それ以外は数値に変換（NaN の場合は現在の値を保持）
     if (value === '') {
       setTargetLength(null);
     } else {
@@ -61,7 +59,7 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
       <div className="max-w-3xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-6">文字列リピーター</h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-6">String Repeater</h1>
           
           <div className="space-y-6">
             {error && (
@@ -145,6 +143,20 @@ export default function App() {
             <li>• 「生成」ボタンをクリックすると、指定した文字数まで文字列が繰り返されます</li>
             <li>• 結果が目標文字数を超える場合は、その長さでカットされます</li>
           </ul>
+        </div>
+
+        {/* GitHub Link */}
+        <div className="mt-6 flex justify-center">
+          <a
+            href="https://github.com/YOUR-USERNAME/string-repeater"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 transition-colors"
+            aria-label="View source on GitHub"
+          >
+            <Github size={20} />
+            <span className="font-medium">View on GitHub</span>
+          </a>
         </div>
       </div>
     </div>
