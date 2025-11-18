@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Copy, RotateCcw, Github } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Copy, Github } from 'lucide-react';
 
 export default function App() {
   const [inputString, setInputString] = useState('');
@@ -8,39 +8,10 @@ export default function App() {
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
 
-  const validateInput = () => {
-    if (!inputString) {
-      setError('文字列を入力してください');
-      return false;
-    }
-    if (targetLength === null || targetLength <= 0) {
-      setError('文字数は1以上を指定してください');
-      return false;
-    }
-    return true;
-  };
-
-  const generateRepeatedString = () => {
-    setError('');
-    if (!validateInput()) return;
-
-    const length = targetLength as number;
-    const repeatCount = Math.ceil(length / inputString.length);
-    const repeated = inputString.repeat(repeatCount).substring(0, length);
-    setResult(repeated);
-  };
-
   const handleCopy = async () => {
     await navigator.clipboard.writeText(result);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleReset = () => {
-    setInputString('');
-    setTargetLength(null);
-    setResult('');
-    setError('');
   };
 
   const handleTargetLengthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +25,24 @@ export default function App() {
       }
     }
   };
+
+  // inputString または targetLength を変更したときに自動で結果を生成する
+  useEffect(() => {
+    setError('');
+    if (!inputString) {
+      setResult('');
+      return;
+    }
+    if (targetLength === null || targetLength <= 0) {
+      setError('文字数は1以上を指定してください');
+      return;
+    }
+
+    const length = targetLength as number;
+    const repeatCount = Math.ceil(length / inputString.length);
+    const repeated = inputString.repeat(repeatCount).substring(0, length);
+    setResult(repeated);
+  }, [inputString, targetLength]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
@@ -94,23 +83,6 @@ export default function App() {
                 min="1"
               />
             </div>
-
-            <div className="flex gap-3">
-              <button
-                onClick={generateRepeatedString}
-                className="flex-1 bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
-              >
-                生成
-              </button>
-              <button
-                onClick={handleReset}
-                className="px-6 py-3 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center gap-2"
-              >
-                <RotateCcw size={18} />
-                リセット
-              </button>
-            </div>
-
             {result && (
               <div className="mt-6">
                 <div className="flex items-center justify-between mb-2">
@@ -140,7 +112,7 @@ export default function App() {
           <h2 className="text-sm font-semibold text-gray-700 mb-2">使い方</h2>
           <ul className="text-sm text-gray-600 space-y-1">
             <li>• 繰り返したい文字列と目標文字数を入力</li>
-            <li>• 「生成」ボタンをクリックすると、指定した文字数まで文字列が繰り返されます</li>
+            <li>• 入力すると自動で指定した文字数まで文字列が生成されます</li>
             <li>• 結果が目標文字数を超える場合は、その長さでカットされます</li>
           </ul>
         </div>
